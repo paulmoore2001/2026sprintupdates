@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>60 Day Sprint Update — Start Garden 100</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="shell">
+    <a class="mark" href="index.html">Start Garden <span>100</span></a>
+    <span class="program-tag">60 Day Sprint Update</span>
+  </div>
+</header>
+
+<main id="main">
+  <div class="shell" id="page-root">
+
+    <div class="loading-line" id="loading-state">Loading your sprint&hellip;</div>
+
+    <div id="not-found-state" style="display:none" class="not-found">
+      <h1>We can't find that link</h1>
+      <p>Double check the link you were sent, or reach out to the Start Garden team for a new one.</p>
+    </div>
+
+    <div id="found-state" style="display:none">
+
+      <section class="sprint-hero">
+        <p class="sprint-eyebrow">60 Day Sprint Update</p>
+        <h1 id="founder-name"></h1>
+        <p class="company" id="company-name"></p>
+      </section>
+
+      <form id="sprint-form" class="sprint-form">
+
+        <div class="record">
+          <div class="record-field">
+            <h2>Your stated milestone</h2>
+            <p class="record-quote" id="milestone-quote"></p>
+          </div>
+          <div class="record-update">
+            <label for="milestone-update">What happened with this milestone?</label>
+            <div class="field-card">
+              <textarea id="milestone-update" name="milestone-update" class="field-input" placeholder="Give us the update, in 150 words or less." required></textarea>
+            </div>
+            <div class="char-count" id="milestone-count">0 / 150 words</div>
+          </div>
+        </div>
+
+        <div class="record">
+          <div class="record-field">
+            <h2>Your stated metrics</h2>
+            <p class="record-quote" id="metrics-quote"></p>
+          </div>
+          <div class="record-update">
+            <label for="metrics-update">Where did these metrics land?</label>
+            <div class="field-card">
+              <textarea id="metrics-update" name="metrics-update" class="field-input" placeholder="Give us the update, in 150 words or less." required></textarea>
+            </div>
+            <div class="char-count" id="metrics-count">0 / 150 words</div>
+          </div>
+        </div>
+
+        <div class="record record-single">
+          <div class="record-field">
+            <h2>Anything else you want to update Start Garden on&hellip;</h2>
+          </div>
+          <div class="record-update">
+            <label for="additional-update">Optional &mdash; anything not covered above.</label>
+            <div class="field-card">
+              <textarea id="additional-update" name="additional-update" class="field-input" placeholder="Give us the update, in 150 words or less."></textarea>
+            </div>
+            <div class="char-count" id="additional-count">0 / 150 words</div>
+          </div>
+        </div>
+
+        <div class="status-block">
+          <h2>How would you best describe your sprint?</h2>
+          <div class="status-options">
+            <label class="status-option">
+              <input type="radio" name="sprint-status" value="Complete">
+              <span>Complete</span>
+            </label>
+            <label class="status-option">
+              <input type="radio" name="sprint-status" value="Partially complete">
+              <span>Partially complete</span>
+            </label>
+            <label class="status-option">
+              <input type="radio" name="sprint-status" value="Completed and exceeded goals">
+              <span>Completed and exceeded goals</span>
+            </label>
+            <label class="status-option">
+              <input type="radio" name="sprint-status" value="Pivoted into a new sprint">
+              <span>Pivoted into a new sprint</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="submit-block">
+          <p class="form-note">This sends your update straight to Start Garden's sprint tracker. You can't edit it after submitting — if you need to correct something, just send another update.</p>
+          <p class="form-error" id="form-error" data-visible="false"></p>
+          <button type="submit" class="btn-submit" id="submit-btn">Submit update</button>
+        </div>
+
+      </form>
+
+      <section class="confirm" id="confirm-state" data-visible="false">
+        <p class="mark-big">Update received</p>
+        <h1>Thanks, <span id="confirm-name"></span>.</h1>
+        <p>Your 60 day sprint update is in. Start Garden's team has it now &mdash; no need to send anything else.</p>
+      </section>
+
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="shell">Sprint updates are recorded to a shared Google Sheet.</div>
+</footer>
+
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

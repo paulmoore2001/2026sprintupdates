@@ -1,0 +1,507 @@
+/* ============================================================
+   Start Garden — 60 Day Sprint Update
+   Design concept: a field ledger for the Start Garden 100 —
+   dark greenhouse-green ground, warm paper record cards,
+   goldenrod for the one active action on the page.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&display=swap');
+
+:root{
+  --ground:      #142A21;
+  --ground-deep: #0E1E18;
+  --paper:       #F5F1E4;
+  --paper-dim:   #E9E3D1;
+  --ink:         #17251E;
+  --ink-soft:    #4B5A50;
+  --line:        #35493D;
+  --line-soft:   #C9C0A4;
+  --gold:        #CE9F3E;
+  --gold-deep:   #A87F2C;
+  --sage:        #7C9A80;
+  --error:       #B5533B;
+
+  --serif: 'Fraunces', Georgia, serif;
+  --sans:  'Work Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --radius: 3px;
+}
+
+*{ box-sizing: border-box; }
+html{ -webkit-text-size-adjust: 100%; }
+
+body{
+  margin: 0;
+  background: var(--ground);
+  color: var(--paper);
+  font-family: var(--sans);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+a{ color: inherit; }
+
+button, input, textarea{ font-family: inherit; }
+
+:focus-visible{
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.skip-link{
+  position: absolute;
+  left: -999px;
+  top: 0;
+}
+.skip-link:focus{
+  left: 1rem;
+  top: 1rem;
+  z-index: 100;
+  background: var(--gold);
+  color: var(--ink);
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius);
+}
+
+/* ---------- shared shell ---------- */
+
+.shell{
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.site-header{
+  padding: 2.25rem 0 1.5rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.site-header .shell{
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.mark{
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 1.05rem;
+  letter-spacing: 0.01em;
+  color: var(--paper);
+  text-decoration: none;
+}
+
+.mark span{
+  color: var(--gold);
+}
+
+.program-tag{
+  font-size: 0.85rem;
+  color: var(--sage);
+}
+
+footer.site-footer{
+  padding: 3rem 0 4rem;
+  color: var(--sage);
+  font-size: 0.85rem;
+  border-top: 1px solid var(--line);
+  margin-top: 3rem;
+}
+
+/* ============================================================
+   INDEX / ROSTER PAGE
+   ============================================================ */
+
+.roster-hero{
+  padding: 3.5rem 0 2.5rem;
+}
+
+.roster-hero h1{
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(2.1rem, 5vw, 3rem);
+  line-height: 1.08;
+  margin: 0 0 0.9rem;
+  max-width: 14ch;
+}
+
+.roster-hero p{
+  max-width: 52ch;
+  color: var(--line-soft);
+  font-size: 1.02rem;
+  margin: 0;
+}
+
+.roster-controls{
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  margin: 2rem 0 1.25rem;
+  flex-wrap: wrap;
+}
+
+.roster-search{
+  flex: 1 1 240px;
+  background: var(--ground-deep);
+  border: 1px solid var(--line);
+  color: var(--paper);
+  padding: 0.65rem 0.85rem;
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+}
+
+.roster-search::placeholder{ color: var(--sage); }
+
+.roster-count{
+  font-size: 0.85rem;
+  color: var(--sage);
+  white-space: nowrap;
+}
+
+.roster-list{
+  list-style: none;
+  margin: 0 0 2rem;
+  padding: 0;
+  border-top: 1px solid var(--line);
+}
+
+.roster-row{
+  border-bottom: 1px solid var(--line);
+}
+
+.roster-row a{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.95rem 0.25rem;
+  text-decoration: none;
+  transition: background 0.15s ease;
+}
+
+.roster-row a:hover,
+.roster-row a:focus-visible{
+  background: rgba(206,159,62,0.07);
+}
+
+.roster-names{
+  flex: 1;
+  min-width: 0;
+}
+
+.roster-founder{
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  color: var(--paper);
+}
+
+.roster-company{
+  font-size: 0.85rem;
+  color: var(--sage);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.roster-status{
+  font-size: 0.78rem;
+  color: var(--ground);
+  background: var(--line-soft);
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.roster-status[data-state="done"]{
+  background: var(--gold);
+}
+
+.roster-go{
+  color: var(--gold);
+  font-size: 1.1rem;
+}
+
+/* ============================================================
+   FOUNDER PAGE
+   ============================================================ */
+
+.sprint-hero{
+  padding: 3rem 0 2rem;
+}
+
+.sprint-eyebrow{
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--sage);
+  margin: 0 0 0.6rem;
+}
+
+.sprint-hero h1{
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(1.9rem, 4.4vw, 2.7rem);
+  line-height: 1.1;
+  margin: 0 0 0.35rem;
+}
+
+.sprint-hero .company{
+  font-size: 1.05rem;
+  color: var(--line-soft);
+  margin: 0;
+}
+
+.record{
+  border-top: 1px solid var(--line);
+  padding: 2.2rem 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.25rem;
+  align-items: start;
+}
+
+.record:last-of-type{
+  border-bottom: 1px solid var(--line);
+}
+
+.record-field h2{
+  font-size: 0.78rem;
+  text-transform: none;
+  letter-spacing: 0.02em;
+  color: var(--gold);
+  margin: 0 0 0.75rem;
+  font-weight: 600;
+}
+
+.record-quote{
+  font-family: var(--serif);
+  font-size: 1.08rem;
+  line-height: 1.55;
+  color: var(--paper);
+  margin: 0;
+  padding-left: 1rem;
+  border-left: 2px solid var(--line);
+}
+
+.record-update label{
+  display: block;
+  font-size: 0.92rem;
+  color: var(--line-soft);
+  margin-bottom: 0.6rem;
+}
+
+.field-card{
+  background: var(--paper);
+  border-radius: var(--radius);
+  padding: 0.9rem 1rem 0.7rem;
+}
+
+textarea.field-input{
+  width: 100%;
+  border: none;
+  background: transparent;
+  resize: vertical;
+  min-height: 96px;
+  font-family: var(--sans);
+  font-size: 0.97rem;
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+textarea.field-input::placeholder{
+  color: var(--ink-soft);
+}
+
+.char-count{
+  display: flex;
+  justify-content: flex-end;
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  margin-top: 0.25rem;
+}
+
+.char-count[data-over="true"]{
+  color: var(--error);
+}
+
+@media (max-width: 680px){
+  .record{
+    grid-template-columns: 1fr;
+    gap: 1.1rem;
+    padding: 1.75rem 0;
+  }
+  .record-quote{
+    font-size: 1rem;
+  }
+}
+
+/* ---------- status radio group ---------- */
+
+.status-block{
+  padding: 2.2rem 0 1rem;
+}
+
+.status-block h2{
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 1.3rem;
+  margin: 0 0 1.1rem;
+}
+
+.status-options{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+@media (max-width: 560px){
+  .status-options{ grid-template-columns: 1fr; }
+}
+
+.status-option{
+  position: relative;
+}
+
+.status-option input{
+  position: absolute;
+  opacity: 0;
+  inset: 0;
+  margin: 0;
+  cursor: pointer;
+}
+
+.status-option span{
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 0.85rem 1rem;
+  font-size: 0.95rem;
+  color: var(--line-soft);
+  transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+}
+
+.status-option span::before{
+  content: "";
+  width: 15px;
+  height: 15px;
+  flex: none;
+  border-radius: 50%;
+  border: 1.5px solid var(--sage);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.status-option input:checked + span{
+  border-color: var(--gold);
+  color: var(--paper);
+  background: rgba(206,159,62,0.08);
+}
+
+.status-option input:checked + span::before{
+  border-color: var(--gold);
+  box-shadow: inset 0 0 0 3.5px var(--gold);
+}
+
+.status-option input:focus-visible + span{
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* ---------- submit ---------- */
+
+.submit-block{
+  padding: 1.5rem 0 2.5rem;
+  border-top: 1px solid var(--line);
+}
+
+.form-note{
+  font-size: 0.85rem;
+  color: var(--sage);
+  margin: 0 0 1.1rem;
+  max-width: 50ch;
+}
+
+.form-error{
+  font-size: 0.88rem;
+  color: var(--error);
+  margin: 0 0 1rem;
+  display: none;
+}
+
+.form-error[data-visible="true"]{ display: block; }
+
+.btn-submit{
+  appearance: none;
+  border: none;
+  background: var(--gold);
+  color: var(--ground-deep);
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.9rem 1.9rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.btn-submit:hover{ background: var(--gold-deep); color: var(--paper); }
+.btn-submit:disabled{ opacity: 0.6; cursor: progress; }
+
+/* ---------- confirmation state ---------- */
+
+.confirm{
+  display: none;
+  padding: 4.5rem 0 5rem;
+  text-align: left;
+}
+
+.confirm[data-visible="true"]{ display: block; }
+
+.confirm .mark-big{
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--gold);
+  font-size: 1rem;
+  margin: 0 0 0.75rem;
+}
+
+.confirm h1{
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(1.9rem, 4.4vw, 2.6rem);
+  margin: 0 0 0.8rem;
+  max-width: 16ch;
+}
+
+.confirm p{
+  color: var(--line-soft);
+  max-width: 48ch;
+  font-size: 1.02rem;
+}
+
+.sprint-form[data-submitted="true"]{ display: none; }
+
+/* ---------- not-found ---------- */
+
+.not-found{
+  padding: 5rem 0;
+}
+
+.not-found h1{
+  font-family: var(--serif);
+  font-size: 2rem;
+  margin: 0 0 0.75rem;
+}
+
+.not-found a{
+  color: var(--gold);
+}
+
+/* ---------- loading ---------- */
+
+.loading-line{
+  color: var(--sage);
+  font-size: 0.9rem;
+  padding: 3rem 0;
+}
