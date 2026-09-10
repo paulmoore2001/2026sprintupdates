@@ -1,0 +1,7 @@
+{
+  "slug": "michael-birkmeier",
+  "founderName": "Michael Birkmeier",
+  "companyName": "Hadal Dynamics",
+  "milestone": "Complete & demonstrate Hadal Dynamics' first end-to-end underwater vehicle integration by building a standardized vehicle connector that ingests ROV telemetry & sensor data, normalizes into Hadal Dynamics data architecture and displays real-time within live-operations. The goal is to prove that Hadal Dynamics can connect to external underwater vehicle systems to establish a repeatable integration framework.",
+  "metrics": "1 end-to-end underwater vehicle integration, 1 standardized vehicle connector"
+}

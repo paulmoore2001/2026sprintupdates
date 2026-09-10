@@ -1,0 +1,7 @@
+{
+  "slug": "shiva-sundaram",
+  "founderName": "Shiva Sundaram",
+  "companyName": "USAMR",
+  "milestone": "Build and commission a second autonomous mobile robot (AMR) so that two USAMR robots operate simultaneously in a warehouse under a single Fleet Manager. The Fleet Manager will assign and orchestrate transport tasks, coordinate traffic between both robots completing material-handling routes without collision or manual intervention, proving the system works as a fleet.",
+  "metrics": "2 autonomous mobile robots (AMRs), 1 fleet manager, 20 customer interviews, 1 pilot project"
+}
